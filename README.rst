@@ -7,6 +7,42 @@ characteristic
 .. image:: https://coveralls.io/repos/hynek/characteristic/badge.png?branch=master
     :target: https://coveralls.io/r/hynek/characteristic?branch=master
 
+You should write more objects with attributes.
+In Python, we like to use and abuse lists, tuples, and dictionaries to stand in for "real" data structures.
+For example, maybe you've called a function and gotten a result like this:
+
+.. code-block:: python
+
+   >>> get_person("bob")
+   {'age': 43218,
+    'full_name': 'Bob Dobbs',
+    'id': UUID('e5867901-363e-47f5-a84f-57086aadf312'),
+    'name': 'bob'}
+
+At first, this is great.
+The data has a nice ``repr``, you can ``pprint`` it, you can inspect what value is in it easily, and it's very easy for the implementor to just type the value they want.
+You can also do things like compare it for value equality with `==`.
+By contrast, if someone had made some class for this, the result would probably look like this the first time you called it:
+
+.. code-block:: python
+
+   >>> get_person("bob")
+   <people.Person object at 0x1116a8bd0>
+
+By contrast, this is not as immediately useful.
+You can't see the data in it, you can't compare it (and in Python 2, worse yet, it looks like you *can* compare it but only for identity with ``==`` and you'll get nonsense values from ``>`` and ``<``).
+Typing out this result was also more work for the person implementing it.
+Even once you get past the fact that they have to jump out of the ``get_person`` function to write a top-level class, they had to type out every attribute name a minimum of three times::
+
+.. code-block:: python
+
+   class Person(object):
+      def __init__(self, name, id, full_name, age):
+         self.name = name
+         self.id = id
+         self.full_name = full_name
+         self.age = age
+
 ``characteristic`` is an MIT_-licensed package that eases the chores of implementing certain attribute-related object protocols in Python.
 It’s inspired by Twisted’s `FancyEqMixin`_ but is implemented using class decorators because `sub-classing is bad for you`_, m’kay\ [*]_?
 

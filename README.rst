@@ -22,7 +22,7 @@ For example, maybe you've called a function and gotten a result like this:
 At first, this is great.
 The data has a nice ``repr``, you can ``pprint`` it, you can inspect what value is in it easily, and it's very easy for the implementor to just type the value they want.
 You can also do things like compare it for value equality with `==`.
-By contrast, if someone had made some class for this, the result would probably look like this the first time you called it:
+By contrast, if someone had made some class for this, the result would probably look like this the first time you called it\:
 
 .. code-block:: python
 

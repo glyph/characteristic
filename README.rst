@@ -32,7 +32,7 @@ By contrast, if someone had made some class for this, the result would probably 
 By contrast, this is not as immediately useful.
 You can't see the data in it, you can't compare it (and in Python 2, worse yet, it looks like you *can* compare it but only for identity with ``==`` and you'll get nonsense values from ``>`` and ``<``).
 Typing out this result was also more work for the person implementing it.
-Even once you get past the fact that they have to jump out of the ``get_person`` function to write a top-level class, they had to type out every attribute name a minimum of three times::
+Even once you get past the fact that they have to jump out of the ``get_person`` function to write a top-level class, they had to type out every attribute name a minimum of three times:
 
 .. code-block:: python
 
